@@ -1,7 +1,7 @@
 import type { AppConfig } from "./types";
 import { DEFAULT_AGENT_EMAILS, DEFAULT_SERVER_URL } from "../data/seedData";
 
-const STORAGE_KEY = "travel-agent-client::config::v3";
+const STORAGE_KEY = "travel-agent-client::config::v4";
 
 export function loadConfig(): AppConfig {
   if (typeof window === "undefined") {

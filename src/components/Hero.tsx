@@ -16,19 +16,22 @@ export function Hero() {
             </span>
           </h1>
           <p className="mt-3 max-w-xl text-sm text-slate-600 sm:text-base">
-            Powered by an AI agent running on{" "}
+            An <span className="font-semibold text-slate-900">AI agent</span> built on{" "}
             <span className="font-semibold text-slate-900">WSO2 Ballerina Integrator</span>,
-            deployed via <span className="font-semibold text-slate-900">Devant</span>, and
-            governed by the <span className="font-semibold text-slate-900">Bijira</span> AI &
-            API gateways. Submit a customer request and watch the agent retrieve packages,
-            check weather, find places, and email both the client and the agent.
+            deployed via the{" "}
+            <span className="font-semibold text-slate-900">WSO2 Integration Platform</span>, and
+            governed by the{" "}
+            <span className="font-semibold text-slate-900">WSO2 API Platform</span>'s AI &
+            API gateways. Travel consultants submit a customer request and watch the AI agent
+            retrieve packages, check weather, find places, and email both the client and the
+            consultant.
           </p>
         </div>
 
         <div className="grid grid-cols-3 gap-3 md:grid-cols-1">
-          <StatPill icon={<Bot className="h-4 w-4" />} label="Agent" value="gpt-4o-mini" />
+          <StatPill icon={<Bot className="h-4 w-4" />} label="AI Agent" value="gpt-4o-mini" />
           <StatPill icon={<Globe2 className="h-4 w-4" />} label="Tools" value="MCP + RAG" />
-          <StatPill icon={<Cloud className="h-4 w-4" />} label="Runtime" value="Devant" />
+          <StatPill icon={<Cloud className="h-4 w-4" />} label="Runtime" value="WSO2 Integration Platform" />
         </div>
       </div>
     </section>

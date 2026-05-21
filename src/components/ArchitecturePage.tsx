@@ -34,9 +34,11 @@ export function ArchitecturePage() {
 
       <div className="grid gap-3 md:grid-cols-3">
         <PillarCard
+          platform="WSO2 API Platform"
+          platformColor="brand"
           accent="from-brand-500 to-brand-600"
           icon={<ShieldCheck className="h-5 w-5" />}
-          title="Bijira API Gateway"
+          title="API Gateway"
           subtitle="Public-facing security perimeter"
           bullets={[
             "Auth, rate limits, throttling, audit",
@@ -45,9 +47,11 @@ export function ArchitecturePage() {
           ]}
         />
         <PillarCard
+          platform="WSO2 Integration Platform"
+          platformColor="violet"
           accent="from-violet-500 to-violet-700"
           icon={<Boxes className="h-5 w-5" />}
-          title="Devant Control Plane"
+          title="Integration Runtime"
           subtitle="Where the integration logic runs"
           bullets={[
             "Two Ballerina BI services deployed",
@@ -56,9 +60,11 @@ export function ArchitecturePage() {
           ]}
         />
         <PillarCard
+          platform="WSO2 API Platform"
+          platformColor="brand"
           accent="from-sunset-400 to-sunset-600"
           icon={<Bot className="h-5 w-5" />}
-          title="Bijira AI Gateway"
+          title="AI Gateway"
           subtitle="LLM + MCP governance"
           bullets={[
             "Owns provider keys — apps don't",
@@ -85,44 +91,44 @@ export function ArchitecturePage() {
             <Step
               n={1}
               color="brand"
-              title="Client submits to the API gateway"
-              body="The React UI POSTs the travel request to the Bijira API Gateway. TLS, auth, throttling, and audit happen here. No service URL is ever exposed publicly."
+              title="Travel consultant submits to the API gateway"
+              body="The human travel consultant POSTs the travel request via the React UI to the WSO2 API Platform's API Gateway. TLS, auth, throttling, and audit happen here. No service URL is ever exposed publicly."
             />
             <Step
               n={2}
               color="brand"
-              title="API gateway forwards to Devant"
-              body="Bijira proxies the request to the Travel Agent service running on the Devant control plane."
+              title="API gateway forwards to the AI Agent"
+              body="The API Gateway proxies the request to the AI Agent service running on the WSO2 Integration Platform control plane."
             />
             <Step
               n={3}
               color="violet"
-              title="Agent retrieves packages from Pinecone (RAG)"
-              body="The agent embeds the request and queries the vector store for the best-fit internal travel package — grounded answers, no hallucinated package names."
+              title="AI Agent retrieves packages from Pinecone (RAG)"
+              body="The AI agent embeds the request and queries the vector store for the best-fit internal travel package — grounded answers, no hallucinated package names."
             />
             <Step
               n={4}
               color="sunset"
               title="LLM calls go through the AI gateway"
-              body="The agent calls a Bijira-managed LLM endpoint, not OpenAI directly. The gateway owns the provider key, logs prompts, enforces quotas, and abstracts the model."
+              body="The AI agent calls a WSO2 API Platform-managed LLM endpoint, not OpenAI directly. The gateway owns the provider key, logs prompts, enforces quotas, and abstracts the model."
             />
             <Step
               n={5}
               color="sunset"
               title="MCP tools are accessed via the AI gateway"
-              body="The agent invokes getWeatherImpact and findTravelPlaces through the AI Gateway's MCP proxy, which forwards to the MCP Tools service on Devant."
+              body="The AI agent invokes getWeatherImpact and findTravelPlaces through the AI Gateway's MCP proxy, which forwards to the MCP Tools service on the WSO2 Integration Platform."
             />
             <Step
               n={6}
               color="violet"
               title="MCP service calls real-world APIs"
-              body="Open-Meteo for weather, Geoapify for places. The agent never holds these keys — only the MCP service does."
+              body="Open-Meteo for weather, Geoapify for places. The AI agent never holds these keys — only the MCP service does."
             />
             <Step
               n={7}
               color="violet"
               title="Two emails dispatched"
-              body="A warm customer itinerary and an internal prospect summary, sent via SMTP. The audience watches both land in real time."
+              body="The AI agent sends a warm customer itinerary to the client and an internal prospect summary to the travel consultant via SMTP. The audience watches both land in real time."
             />
           </ol>
         </div>
@@ -141,7 +147,7 @@ export function ArchitecturePage() {
           <ValueCard
             icon={<CheckCircle2 className="h-4 w-4" />}
             title="Observability everywhere"
-            body="Devant traces the BI services. Bijira API Gateway shows external traffic. Bijira AI Gateway shows every LLM and tool call, with cost and latency."
+            body="The WSO2 Integration Platform traces the BI services. The WSO2 API Platform's API Gateway shows external traffic, and its AI Gateway shows every LLM and tool call, with cost and latency."
           />
         </div>
       </section>
@@ -151,9 +157,10 @@ export function ArchitecturePage() {
           <h3 className="text-base font-bold text-slate-900">Why this story matters</h3>
           <p className="mt-2 max-w-3xl text-sm text-slate-600">
             Traditional architectures bundle the API gateway, the integration runtime, and
-            the AI provider into one tangled layer. Bijira and Devant split them apart so
-            each team — platform, integration, and AI — can move at its own pace, under
-            its own governance, without stepping on the others. That's the WSO2 promise:
+            the AI provider into one tangled layer. The WSO2 API Platform and the WSO2
+            Integration Platform split them apart so each team — platform, integration, and
+            AI — can move at its own pace, under its own governance, without stepping on
+            the others. That's the WSO2 promise:
             <span className="font-semibold text-slate-900">
               {" "}
               composable, governed, production-ready AI integration.
@@ -166,21 +173,34 @@ export function ArchitecturePage() {
 }
 
 function PillarCard({
+  platform,
+  platformColor,
   accent,
   icon,
   title,
   subtitle,
   bullets
 }: {
+  platform: string;
+  platformColor: "brand" | "violet";
   accent: string;
   icon: React.ReactNode;
   title: string;
   subtitle: string;
   bullets: string[];
 }) {
+  const platformBadge =
+    platformColor === "brand"
+      ? "bg-brand-100 text-brand-700 ring-brand-200"
+      : "bg-violet-100 text-violet-700 ring-violet-200";
   return (
-    <div className="glass relative overflow-hidden rounded-2xl p-5 shadow-lg shadow-brand-500/5">
+    <div className="glass relative overflow-hidden rounded-2xl p-5 pt-7 shadow-lg shadow-brand-500/5">
       <div className={`absolute inset-x-0 top-0 h-1 bg-gradient-to-r ${accent}`} />
+      <span
+        className={`absolute right-3 top-3 inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider ring-1 ${platformBadge}`}
+      >
+        {platform}
+      </span>
       <div className="flex items-center gap-2">
         <div
           className={`flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br ${accent} text-white shadow-sm`}

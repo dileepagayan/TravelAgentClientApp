@@ -67,7 +67,7 @@ function Body({ entry }: { entry: ResponseEntry }) {
   if (entry.inFlight) {
     return (
       <p className="mt-1 text-xs text-slate-500">
-        Agent is running RAG retrieval, calling MCP tools, and composing emails…
+        AI agent is running RAG retrieval, calling MCP tools, and composing emails…
       </p>
     );
   }

@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "description": "Travel Agency AI Studio — demo client for the WSO2 BI + Devant + Bijira travel agent",
+  "description": "Travel Agency AI Studio — demo client for the WSO2 BI + WSO2 Integration Platform + Bijira travel agent",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",

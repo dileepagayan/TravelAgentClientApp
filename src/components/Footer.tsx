@@ -4,7 +4,7 @@ export function Footer() {
       <p>
         Built with{" "}
         <span className="font-semibold text-slate-700">
-          WSO2 Ballerina Integrator · Devant · Bijira
+          WSO2 Ballerina Integrator · WSO2 Integration Platform · WSO2 API Platform
         </span>
       </p>
       <p className="mt-1 opacity-70">

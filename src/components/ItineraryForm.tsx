@@ -79,7 +79,7 @@ export function ItineraryForm({ agentEmails, submitting, onSubmit }: ItineraryFo
         </Field>
 
         <Field
-          label="Assigned travel agent"
+          label="Assigned travel consultant"
           icon={<UserRound className="h-4 w-4" />}
           error={errors.agentEmail}
         >
@@ -88,7 +88,7 @@ export function ItineraryForm({ agentEmails, submitting, onSubmit }: ItineraryFo
             onChange={(e) => setAgentEmail(e.target.value)}
             className={selectClass(!!errors.agentEmail)}
           >
-            {agentEmails.length === 0 && <option value="">No agents configured</option>}
+            {agentEmails.length === 0 && <option value="">No consultants configured</option>}
             {agentEmails.map((email) => (
               <option key={email} value={email}>
                 {email}
@@ -158,7 +158,7 @@ export function ItineraryForm({ agentEmails, submitting, onSubmit }: ItineraryFo
 
       <div className="mt-6 flex items-center justify-between gap-3 border-t border-slate-200 pt-5">
         <p className="text-xs text-slate-500">
-          Submitting will email the customer and the assigned agent.
+          Submitting will email the customer and the assigned consultant.
         </p>
         <button
           type="submit"

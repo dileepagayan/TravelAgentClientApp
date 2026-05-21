@@ -99,8 +99,8 @@ export function AdminPanel({ open, config, onClose, onSave }: AdminPanelProps) {
               className="mt-1 w-full rounded-lg border border-slate-200 px-3 py-2 text-sm focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-100"
             />
             <p className="mt-1 text-[11px] text-slate-400">
-              The client appends <code>/itinerary</code> when sending requests. Use{" "}
-              <code>/api/...</code> to route through the Vite dev proxy (avoids CORS in dev).
+              The client appends <code>/itinerary</code> when sending requests. CORS must be
+              enabled on the API gateway for this origin.
             </p>
           </section>
 
@@ -121,7 +121,7 @@ export function AdminPanel({ open, config, onClose, onSave }: AdminPanelProps) {
           <section>
             <SectionLabel
               icon={<Plus className="h-3.5 w-3.5" />}
-              title="Agent email list (in-memory)"
+              title="Consultant email list (in-memory)"
             />
             <div className="mt-2 flex gap-2">
               <input
@@ -136,7 +136,7 @@ export function AdminPanel({ open, config, onClose, onSave }: AdminPanelProps) {
                     handleAddEmail();
                   }
                 }}
-                placeholder="new.agent@travelco.com"
+                placeholder="new.consultant@travelco.com"
                 className="flex-1 rounded-lg border border-slate-200 px-3 py-2 text-sm focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-100"
               />
               <button
@@ -169,7 +169,7 @@ export function AdminPanel({ open, config, onClose, onSave }: AdminPanelProps) {
               ))}
               {agentEmails.length === 0 && (
                 <li className="rounded-md border border-dashed border-slate-300 bg-white px-3 py-3 text-center text-xs text-slate-400">
-                  No agents configured. Add at least one.
+                  No consultants configured. Add at least one.
                 </li>
               )}
             </ul>
