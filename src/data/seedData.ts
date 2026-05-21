@@ -40,4 +40,4 @@ export const POPULAR_DESTINATIONS: string[] = [
 ];
 
 export const DEFAULT_SERVER_URL =
-  "https://ec2-18-118-107-166.us-east-2.compute.amazonaws.com:8443/travelagent/travel-agent-api-service/v1.0";
+  "/api/travelagent/travel-agent-api-service/v1.0";

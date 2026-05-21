@@ -5,6 +5,15 @@ export default defineConfig({
   plugins: [react()],
   server: {
     port: 5173,
-    host: true
+    host: true,
+    proxy: {
+      "/api": {
+        target:
+          "https://ec2-18-118-107-166.us-east-2.compute.amazonaws.com:8443",
+        changeOrigin: true,
+        secure: false,
+        rewrite: (path) => path.replace(/^\/api/, "")
+      }
+    }
   }
 });

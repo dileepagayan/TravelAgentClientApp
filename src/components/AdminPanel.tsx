@@ -99,8 +99,8 @@ export function AdminPanel({ open, config, onClose, onSave }: AdminPanelProps) {
               className="mt-1 w-full rounded-lg border border-slate-200 px-3 py-2 text-sm focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-100"
             />
             <p className="mt-1 text-[11px] text-slate-400">
-              The client appends <code>/itinerary</code> when sending requests. CORS must be
-              enabled on the API gateway for this origin.
+              The client appends <code>/itinerary</code> when sending requests. Use{" "}
+              <code>/api/...</code> to route through the built-in Express proxy (no CORS).
             </p>
           </section>
 
